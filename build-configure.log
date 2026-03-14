@@ -1,0 +1,111 @@
+Navy@WIN11-PW-YHJ-01 MINGW64 ~
+$ ls
+nginx-release-1.28.2
+
+Navy@WIN11-PW-YHJ-01 MINGW64 ~
+$ mv nginx-release-1.28.2 Nginx_1.28.2
+
+Navy@WIN11-PW-YHJ-01 MINGW64 ~
+$ cd Nginx_1.28.2
+
+Navy@WIN11-PW-YHJ-01 MINGW64 ~/Nginx_1.28.2
+$ mkdir objs
+
+Navy@WIN11-PW-YHJ-01 MINGW64 ~/Nginx_1.28.2
+$ mkdir objs/lib
+
+Navy@WIN11-PW-YHJ-01 MINGW64 ~/Nginx_1.28.2
+$ cd objs/lib
+
+Navy@WIN11-PW-YHJ-01 MINGW64 ~/Nginx_1.28.2/objs/lib
+$ ls
+openssl-3.5.4.tar.gz  pcre2-10.46.tar.gz  zlib-1.3.1.tar.gz
+
+Navy@WIN11-PW-YHJ-01 MINGW64 ~/Nginx_1.28.2/objs/lib
+$ tar -xzf openssl-3.5.4.tar.gz
+
+Navy@WIN11-PW-YHJ-01 MINGW64 ~/Nginx_1.28.2/objs/lib
+$ tar -xzf pcre2-10.46.tar.gz
+
+Navy@WIN11-PW-YHJ-01 MINGW64 ~/Nginx_1.28.2/objs/lib
+$ tar -xzf zlib-1.3.1.tar.gz
+
+Navy@WIN11-PW-YHJ-01 MINGW64 ~/Nginx_1.28.2/objs/lib
+$ ls
+openssl-3.5.4  openssl-3.5.4.tar.gz  pcre2-10.46  pcre2-10.46.tar.gz  zlib-1.3.1  zlib-1.3.1.tar.gz
+
+Navy@WIN11-PW-YHJ-01 MINGW64 ~/Nginx_1.28.2/objs/lib
+$ cd ~/Nginx_1.28.2
+
+Navy@WIN11-PW-YHJ-01 MINGW64 ~/Nginx_1.28.2
+$ ./auto/configure      \
+        --with-cc=cl    \
+        --builddir=objs \
+        --with-debug    \
+        --prefix=       \
+        --conf-path=conf/nginx.conf             \
+        --pid-path=logs/nginx.pid       \
+        --http-log-path=logs/access.log         \
+        --error-log-path=logs/error.log         \
+        --sbin-path=nginx.exe           \
+        --http-client-body-temp-path=temp/client_body_temp      \
+        --http-proxy-temp-path=temp/proxy_temp          \
+        --http-fastcgi-temp-path=temp/fastcgi_temp              \
+        --http-scgi-temp-path=temp/scgi_temp    \
+        --http-uwsgi-temp-path=temp/uwsgi_temp  \
+        --with-cc-opt=-DFD_SETSIZE=1024         \
+        --with-pcre=objs/lib/pcre2-10.46        \
+        --with-zlib=objs/lib/zlib-1.3.1         \
+        --with-http_v2_module                           \
+        --with-http_realip_module                       \
+        --with-http_addition_module                     \
+        --with-http_sub_module                          \
+        --with-http_dav_module                          \
+        --with-http_stub_status_module          \
+        --with-http_flv_module                          \
+        --with-http_mp4_module                          \
+        --with-http_gunzip_module                       \
+        --with-http_gzip_static_module          \
+        --with-http_auth_request_module         \
+        --with-http_random_index_module         \
+        --with-http_secure_link_module          \
+        --with-http_slice_module                        \
+        --with-mail             \
+        --with-stream   \
+        --with-stream_realip_module                     \
+        --with-stream_ssl_preread_module        \
+        --with-openssl=objs/lib/openssl-3.5.4   \
+        --with-openssl-opt="no-asm no-tests no-makedepend       \
+                -D_WIN32_WINNT=0x0501"          \
+        --with-http_ssl_module                  \
+        --with-mail_ssl_module                  \
+        --with-stream_ssl_module
+checking for OS
+ + MINGW64_NT-10.0-26200 3.6.5-0eeda3e1.x86_64 x86_64
+ + using Microsoft Visual C++ compiler
+ + cl version:
+checking for MINGW64_NT-10.0-26200 specific features
+creating objs/Makefile
+
+Configuration summary
+  + using PCRE2 library: objs/lib/pcre2-10.46
+  + using OpenSSL library: objs/lib/openssl-3.5.4
+  + using zlib library: objs/lib/zlib-1.3.1
+
+  nginx path prefix: ""
+  nginx binary file: "/nginx.exe"
+  nginx modules path: "/modules"
+  nginx configuration prefix: "/conf"
+  nginx configuration file: "/conf/nginx.conf"
+  nginx pid file: "/logs/nginx.pid"
+  nginx error log file: "/logs/error.log"
+  nginx http access log file: "/logs/access.log"
+  nginx http client request body temporary files: "temp/client_body_temp"
+  nginx http proxy temporary files: "temp/proxy_temp"
+  nginx http fastcgi temporary files: "temp/fastcgi_temp"
+  nginx http uwsgi temporary files: "temp/uwsgi_temp"
+  nginx http scgi temporary files: "temp/scgi_temp"
+
+
+Navy@WIN11-PW-YHJ-01 MINGW64 ~/Nginx_1.28.2
+$
